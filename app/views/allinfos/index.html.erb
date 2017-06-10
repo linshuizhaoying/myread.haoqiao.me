@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>凑单团</title>
+  <%= stylesheet_link_tag 'css/cdt' %>
+  <style>
+    body{
+      background-image: url('<%= asset_path("wet_snow.png") %>');
+    }
+  </style>
+</head>
+
+<body>
+    <!-- menu navigation -->
+  <header class="header">
+        <div class="navigation spy">
+            <ul class="nav">
+                <li class="hide">
+                    <a href="#top"></a>
+                </li>
+                <% if current_user %>
+                  <li>
+                    <%= link_to "查看我的凑单", "houses", class: "nav-btn btn btn-btn-rounded" %>
+                  </li>
+                  <li>
+                    <%= link_to "发布新凑单", "allinfos/newinfo", class: "nav-btn btn btn-success btn-rounded" %>
+                  </li>
+                <% end %>
+
+
+            </ul>
+        </div>
+  </header>
+  <section class="content_wrap">
+  <ul class="box">
+    <% @allinfos.each do |allinfo| %>
+      <li>
+        <div class="circle">
+          <div class="front front-popular">
+            <div class="title color-3-font"><%=sanitize allinfo.title %></div>
+            <span>最低参与金额：</span>
+            <div class="price color-3-font"><span class="currency">￥</span><span class="total"></span><span class="end"><%=sanitize allinfo.price %></span></div>
+            <% @need = allinfo.max.to_i / allinfo.price.to_i %> 
+            <% @joined = @alldata.where(allinfo_id: allinfo.id).count %>
+            <% @need =@need.to_i - @joined.to_i  %>
+            <div class="description">还差<%= @need %>人</div>
+          </div><!-- end div .front front-popular -->
+          <div class="popular color-3-font icon-star"></div>
+          <div class="back color-3-bg info">
+            <div class="title">
+            </div>
+            <div class="description">
+              <ul>
+                <li><i class="icon-ok-sign"></i>开始时间：2015-04-12</li>
+                <li><i class="icon-remove-sign"></i>截止时间:2015-05-1</li>
+                <li><i class="icon-chevron-sign-right"></i>已报名人数/目标人数:
+                <%= @alldata.where(allinfo_id: allinfo.id).count %> /<%= allinfo.max.to_i / allinfo.price.to_i %> </li>
+                <li><i class="icon-exclamation-sign"></i>当前状态：进行时</li>
+                <%@link_to = 'allinfos/join/' + allinfo.id.to_s + "/" + current_user.id.to_s %>
+
+                <% @single = @alldata.where(allinfo_id: allinfo.id ) %>
+                <%if @single.where(joined_id: current_user.id ).count > 0 %>
+                  <a href=<%= @link_to %> class="btn btn-success disabled">已报名</a>
+                <% else %>
+                  <a href=<%= @link_to %> class="btn btn-info">报名</a>
+                <% end %>
+
+                <a class="btn btn-primary" href= http://<%=allinfo.url %> target="_blank">查看详情</a>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+</section>
+
+</body>
+
+</html>

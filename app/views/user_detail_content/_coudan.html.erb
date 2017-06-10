@@ -1,0 +1,30 @@
+  <section class="content_wrap">
+    <% @allinfos = Allinfo.all %>
+    <% @alldata = Oneinfo.all %>
+      <% @user = User.find(current_user) %>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>凑单名</th>
+          <th>还差人数</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+    <% @allinfos.each do |allinfo| %>
+      <% if allinfo.user_id == @user.id %>
+        <% @need = allinfo.max.to_i / allinfo.price.to_i %> 
+        <% @joined = @alldata.where(allinfo_id: allinfo.id).count %>
+        <% @need =@need.to_i - @joined.to_i  %>
+            <tr class="active">
+              <td><%= allinfo.title %></td>
+              <td><%= @need %></td>
+              <td><%= link_to 'Destroy', allinfo,
+                      method: :delete, data: { confirm: '你确定删除凑单嘛?（一旦删除将无法恢复。。。）' } %></td>
+            </tr>
+       <% end %>
+    <% end %>
+      </tbody>
+      </table>
+
+</section>

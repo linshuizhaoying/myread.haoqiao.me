@@ -1,0 +1,2 @@
+module AllinfosHelper
+end

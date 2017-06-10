@@ -1,0 +1,89 @@
+<!doctype html>
+<html class="signup no-js" lang="">
+
+<head>
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta name="description" content="Flat, Clean, Responsive, application admin template built with bootstrap 3">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <!-- /meta -->
+    <%= stylesheet_link_tag 'css/sign' %>
+    <title>加入圣院</title>
+</head>
+
+<body class="bg-info"> 
+    <div class="center-wrapper">
+        <div class="center-content">
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                    <section class="panel bg-white no-b">
+                        <ul class="switcher-dash-action">
+                            <li><a href="login.html" class="selected">Sign in</a></li>
+                            <li class="active"><a href="#" class="">New account</a></li>
+                        </ul>
+                      <%= form_for @user do |f| %>
+                        <div class="p15">  
+                            <form role="form" action="signin.html">
+                                <% if @user.errors.any? %>
+                                  <div class="form_errorred">
+                                    填写的信息有误
+                                  </div>
+                                <% end %>
+
+                                <dl class="form">
+                                  <dt><%= f.label :name %></dt>
+                                  <dd><%= f.text_field :name ,:class => "form-control input-lg mb25"%></dd>
+                                  <% if @user.errors[:name].any? %>
+                                    <dd class="error"><%= @user.errors[:name][0] %></dd>
+                                  <% end %>
+                                </dl>
+
+                                <dl class="form">
+                                  <dt> <%= f.label :email %></dt>
+                                  <dd> <%= f.text_field :email ,:class => "form-control input-lg mb25"%> </dd>
+                                  <% if @user.errors[:email].any? %>
+                                    <dd class="error"><%= @user.errors[:email][0] %></dd>
+                                  <% end %>
+                                </dl>
+
+                                <dl class="form">
+                                  <dt> <%= f.label :password %> </dt>
+                                  <dd> <%= f.password_field :password ,:class => "form-control input-lg mb25"%> </dd>
+                                  <% if @user.errors[:password].any? %>
+                                    <dd class="error"><%= @user.errors[:password][0] %></dd>
+                                  <% end %>
+                                </dl>
+
+                                <dl class="form">
+                                  <dt> <%= f.label :password_confirmation %> </dt>
+                                  <dd> <%= f.password_field :password_confirmation ,:class => "form-control input-lg mb25"%> </dd>
+                                </dl>
+
+                                <div class="show">
+                                    <label class="checkbox">
+                                        <input type="checkbox" value="remember-me">I accept
+                                    <a href="javascript:;">Sublime's</a>terms and conditions
+                                    </label>
+                                </div>
+                                <p><%= f.submit "注册", :class => "btn btn-primary btn-lg btn-block" %></p>
+                            </form>
+                        </div>
+                      <% end %>
+                    </section>
+                    <p class="text-center">
+                        Copyright &copy;
+                        <span id="year" class="mr5"></span>
+                        <span>临水照影</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var el = document.getElementById("year"),
+            year = (new Date().getFullYear());
+        el.innerHTML = year;
+    </script>
+</body>
+
+</html>

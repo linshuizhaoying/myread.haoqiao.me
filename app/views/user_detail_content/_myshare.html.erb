@@ -1,0 +1,24 @@
+  <section class="content_wrap">
+    <% @shares = Share.all.order(id: :desc) %>
+    <% @user = User.find(current_user) %>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>分享名</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+    <% @shares.each do |share| %>
+      <% if share.user_id == @user.id %>
+          <tr class="active">
+            <td><%= share.title %></td>
+            <td><%= link_to 'Destroy', share,
+                    method: :delete, data: { confirm: '你确定删除分享嘛?（一旦删除将无法恢复。。。）' } %></td>
+          </tr>
+      <% end %>
+    <% end %>
+      </tbody>
+      </table>
+
+</section>

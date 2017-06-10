@@ -1,0 +1,25 @@
+  <section class="content_wrap">
+    <% @articles =  Article.all.order(id: :desc) %>
+    <% @user = User.find(current_user) %>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>笔记名</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+
+    <% @articles.each do |article| %>
+        <% if article.user_id == @user.id %>
+          <tr class="active">
+            <td><%= article.title %></td>
+            <td><%= link_to 'Destroy', article,
+                    method: :delete, data: { confirm: '你确定删除文章嘛?（一旦删除将无法恢复。。。）' } %></td>
+          </tr>
+        <% end %>
+    <% end %>
+      </tbody>
+      </table>
+
+</section>

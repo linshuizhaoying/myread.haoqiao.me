@@ -1,0 +1,250 @@
+<title>千千静阅</title>    
+<style>
+  body{
+    background-image: url('<%= asset_path("nice_snow.png") %>');
+  }
+</style>
+<body>
+ 
+    <!-- menu navigation -->
+    <header class="header">
+      <div class="navigation spy">
+          <ul class="nav">
+              <li class="hide">
+                  <a href="#top"></a>
+              </li>
+              <% if current_user %>
+                <li><%= link_to current_user.name,houses_path %></li>
+                <li class="notifications dropdown">
+                    <a href="javascript:;" data-toggle="dropdown">
+                        <i class="ti-bell"></i>
+                        <div class="badge badge-top bg-danger animated flash">
+
+                          <% @letter_find = @letters.where(belong_id: @user.id) %>
+                          <% @letter_num1 = @letter_find.count %>
+                          <% @letter_num2 = @letter_find.where(state:-1).count%>
+                            <span><%= @letter_num1 - @letter_num2  %></span>
+                        </div>
+                    </a>
+                </li>
+                <li><%= link_to "退出", logout_path, method: "delete" %></li>
+              <% else %>
+                <li>
+                  <%= link_to "Login", "login", class: "nav-btn btn btn-btn-rounded" %>
+                </li>
+                <li>
+                  <%= link_to "Sign Up", "signup", class: "nav-btn btn btn-success btn-rounded" %>
+                </li>
+              <% end %>
+          </ul>
+      </div>
+    </header>
+    <!-- /menu navigation -->
+    <section class="content-section banner">
+        <div class="parallax-cover parallax-0" style="background-image: url(img/cover3.jpg);"></div>
+
+        <div class="overlay-darken-4"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="text-center">
+                        <blockquote class="text-white">
+                            <p>Education is not to implant, but the lighting of flames（教育的意义是点燃希望的火苗，而不是装满一个容器。）</p>
+                            <small class="color">Socrates （苏格拉底）</small>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- statistics -->
+    <section id="statistics" class="content-section banner parallax color-inherit text-white text-center" style="background-image: url(img/cover2.jpg);">
+
+        <div class="overlay-colored-3"></div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-xs-6 p15">
+                    <i class="fa fa-home icon-size"></i>
+                    <b class="count" data-from="0" data-to="6850" data-appear-top-offset="-200">0</b>
+                    <span>
+                    <% if current_user %>
+                        <%= link_to "黄金屋", "houses", class: "heading-font heading-size btn btn-white btn-lg btn-outline" %>
+                        <% else %>
+                        <%= link_to "黄金屋", "redirect", class: "heading-font heading-size btn btn-white btn-lg btn-outline" %>
+                    <% end %>
+                   </span>
+                </div>
+                
+                <div class="col-sm-3 col-xs-6 p15">
+                    <i class="fa fa-book icon-size"></i>
+                    <b class="count" data-from="0" data-to="1000" data-appear-top-offset="-200">0</b>
+                    <%= link_to "笔记月刊", "monthly", class: "heading-font heading-size btn btn-white btn-lg btn-outline" %>
+                </div>
+
+                <div class="col-sm-3 col-xs-6 p15">
+                    <i class="fa fa-road icon-size"></i>
+                    <b class="count" data-from="0" data-to="2300" data-appear-top-offset="-200">0</b>
+                    <%= link_to "图书漂流", "drifts", class: "heading-font heading-size btn btn-white btn-lg btn-outline" %>
+                </div>
+
+                <div class="col-sm-3 col-xs-6 p15">
+                    <i class="count-icon ti-na"></i>
+                    <b class="count" data-from="0" data-to="8650" data-appear-top-offset="-200">0</b>
+                   <%= link_to "以旧易书", "swaps", class: "heading-font heading-size btn btn-white btn-lg btn-outline" %>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+    <!-- /statistics -->
+    <section class="services container clearfix mt25 mb25"> 
+            <!-- Services List  -->
+            <div class="services_list col-xs-12">
+                    <div class="col-xs-4 table-responsive">
+                               <table class="table table-hover">
+                                   <thead>
+                                     <tr>
+                                       <th class="text-center">
+                                         <h4>图书优惠/折扣</h4>
+                                       </th>
+                                     </tr>
+                                   </thead>
+                                   <tbody>
+                                      <% @goodsinfos.each do |goodsinfo| %>
+                                         <tr>
+                                           <td class="text-center">
+                                      <%= link_to goodsinfo.title, goodsinfo.url, class: "nav-btn btn btn-btn-rounded",target:"_blank" %>
+                                           </td>
+                                         </tr>
+                                       <% end %>
+                                   </tbody>
+                                </table>
+                    </div>
+                    <div class="col-xs-4 table-responsive">
+                         <table class="table table-hover">
+                           <thead>
+                             <tr>
+                               <th class="text-center"><h4>热门书单</h4></th>
+                             </tr>
+                           </thead>
+                           <tbody>
+                             <tr>
+                               <td class="text-center"><a href="http://www.jianshu.com/p/df3e68422c1d">2014年书单</a></td>
+                             </tr>
+                             <tr>
+                               <td class="text-center"><a href="http://www.jianshu.com/p/f4df107d6946">2015年书单</a></td>
+                             </tr>
+                           </tbody>
+                         </table>
+                    </div>
+                    <div class="col-xs-4 table-responsive">
+                         <table class="table table-hover">
+                           <thead>
+                             <tr>
+                               <th class="text-center"><h4>最新资源</h4></th>
+                             </tr>
+                           </thead>
+                           <tbody>
+                              <% @shares.each do |share| %>
+                                 <tr>
+                                   <td class="text-center">
+                              <%= link_to share.title,"/shares", class: "nav-btn btn btn-btn-rounded",target:"_blank" %>
+                                   </td>
+                                 </tr>
+                               <% end %>
+                           </tbody>
+                         </table>
+                    </div>
+            </div>
+    </section>
+    <div>
+    <section class="mt25 mb25">
+      <div class="container">
+        <div class="col-xs-12">
+          <div class="col-xs-3">
+            <div class="feature-icon bordered text-center">
+                <i  class="ti-pencil-alt color"></i>
+            </div>
+            <div class="feature-description text-center">
+                <h5>
+                    <span class="btn"><%= link_to "笔记广场", articles_path ,target:"_blank" %></span>
+                    <small class="show text-muted">读书笔记，妙笔文章。</small>
+                </h5>
+                <p>好记性不如烂笔头，分享心得，分享阅读的快乐。</p>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="feature-icon bordered text-center">
+                <i class="ti-bookmark-alt color"></i>
+            </div>
+            <div class="feature-description text-center">
+                <h5>
+                    <span class="btn"><%= link_to "以书会友", userbooks_path ,target:"_blank" %></span></span>
+                    <small class="show text-muted">畅所欲言，以书会友</small>
+                </h5>
+                <p>抛砖引玉，以书聚友。</p>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="feature-icon bordered text-center">
+                <i class="fa fa-shopping-cart color"></i>
+            </div>
+            <div class="feature-description text-center">
+                <h5>
+                    <span class="btn"><%= link_to "凑单团", allinfos_path ,target:"_blank" %></span></span>
+                    <small class="show text-muted">加入凑单团，以最实惠的价格购书。</small>
+                </h5>
+                <p>多人凑单买书，呼朋唤友。</p>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="feature-icon bordered text-center">
+                <i class="fa fa-gift color"></i>
+            </div>
+            <div class="feature-description text-center">
+                <h5>
+                    <span class="btn"><%= link_to "资源共享", shares_path ,target:"_blank"%></span></span>
+                    <small class="show text-muted">分享拥有的电子书以及其它资源。</small>
+                </h5>
+                <p>当你急需一些稀缺书籍，不妨来这发布需求。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="content-section backimg">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-sm-12 mb25">
+                    <a class="btn btn-primary btn-social-icon btn-rounded btn-outline btn-sm smooth-scroll mb25" href="#top">
+                        <i class="ti-angle-up"></i>
+                    </a>
+                    <br>
+                </div>
+                <div class="col-sm-12 mb25">
+                    <p class="text-center">
+                        Copyright &copy;
+                        <span id="year" class="mr5"></span>
+                        <span>临水照影</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- /footer -->
+
+    <%= javascript_include_tag "jqueryx" %>
+    <%= javascript_include_tag "lightSlider" %>
+    <script>
+      $(document).ready(function() {
+        $("#scorll").lightSlider({
+            loop:true,
+            keyPress:true
+        });
+      });
+     </script>
+</body>
+

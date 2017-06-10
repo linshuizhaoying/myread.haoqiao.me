@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+    <%= stylesheet_link_tag 'css/newinfo' %>
+    <%= stylesheet_link_tag 'css/awesome' %>
+    <%= form_for @share ,:html => {:class => 'contact-form'} do |f| %>
+	  	<span>添加新共享</span>
+		<ul>
+			<li>
+				<i class="fa fa-book form-icon"></i>
+				<%= f.text_field :title, placeholder: 'What you want share?' %>
+			</li>
+			<li>
+				<i class="fa fa-share-square-o form-icon"></i>
+				<%= f.text_field :link, placeholder: '网盘链接地址' %>
+			</li>
+			<li>
+				<i class="fa fa-money form-icon"></i>
+				<%= f.text_field :limit, placeholder: '限制下载最大人数,可填写1-200内任意数字' %>
+			</li>
+
+			    <%= f.submit '提交', :class => 'btn btn-block btn-default' %>
+		</ul>
+    <% end %>
+</body>
+
+</html>

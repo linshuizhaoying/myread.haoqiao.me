@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  age: MyString
+  extent: MyText
+  want_book: MyText
+  state: 1
+  guest_id: MyString
+  check: 1
+  user_id: 
+
+two:
+  title: MyString
+  age: MyString
+  extent: MyText
+  want_book: MyText
+  state: 1
+  guest_id: MyString
+  check: 1
+  user_id: 

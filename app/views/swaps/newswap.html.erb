@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+    <%= stylesheet_link_tag 'css/newinfo' %>
+    <%= stylesheet_link_tag 'css/awesome' %>
+    <%= form_for @swap ,:html => {:class => 'contact-form'} do |f| %>
+	  	<span>添加新交换书籍</span>
+		<ul>
+			<li>
+				<i class="fa fa-book form-icon"></i>
+				<%= f.text_field :title, placeholder: '书名' %>
+			</li>
+			<li>
+				<i class="fa fa-share-square-o form-icon"></i>
+				<%= f.text_field :age, placeholder: '书的年龄' %>
+			</li>
+			<li>
+				<i class="fa fa-money form-icon"></i>
+				<%= f.text_field :extent, placeholder: '书籍破损程度' %>
+			</li>
+			<li>
+				<i class="fa fa-money form-icon"></i>
+				<%= f.text_field :want_book, placeholder: '想要交换的书的名字或者种类' %>
+			</li>
+			    <%= f.submit '提交', :class => 'btn btn-block btn-default' %>
+		</ul>
+    <% end %>
+</body>
+
+</html>

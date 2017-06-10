@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  from_id: MyString
+  belong_id: MyString
+  content: MyText
+  state: 1
+  user_id: 
+
+two:
+  title: MyString
+  from_id: MyString
+  belong_id: MyString
+  content: MyText
+  state: 1
+  user_id: 

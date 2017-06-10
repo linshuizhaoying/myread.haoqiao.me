@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>以书会友</title>
+  <%= stylesheet_link_tag 'css/yshy' %>
+  <%= stylesheet_link_tag 'css/yshy2' %>
+  <%= javascript_include_tag 'js/jquery11' %>
+  <%= javascript_include_tag 'js/yshy' %>
+</head>
+  <style>
+      body {
+        background-image: url('<%= asset_path("linedpaper.png") %>');
+      }
+  </style>
+
+<body>
+    <!-- menu navigation -->
+  <header class="header">
+        <div class="navigation spy">
+            <ul class="nav">
+                <li class="hide">
+                    <a href="#top"></a>
+                </li>
+                <% if current_user %>
+                  <li>
+                  <li>
+                    <%= link_to "发布新交友留言", "userbooks/publish", class: "nav-btn btn btn-success btn-rounded" ,target:"blank"%>
+                  </li>
+                <% end %>
+
+
+            </ul>
+        </div>
+  </header>
+    <ul id="messages">
+
+    <!-- content -->
+    <% @userbooks.each do |userbook| %>
+      <li>
+        <div class="infos">
+          <img src=<%= userbook.img %> />
+          
+        </div>
+        <div class="content">
+          <h3>
+            <%=sanitize userbook.title %>
+            <b>座右铭：<%=sanitize userbook.desc %></b>
+          </h3>
+          <p>
+            <%=sanitize userbook.body %>
+          </p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+</body>
+
+</html>

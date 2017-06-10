@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>黄金屋</title>
+    <meta charset="utf-8">
+		<%= stylesheet_link_tag 'css/houses' %>
+    <style>
+      body {
+        background-image: url('<%= asset_path("linedpaper.png") %>');
+      }
+      .green_bg{
+        background: #86bb89;
+      }
+      .footer {
+        background-image: url('<%= asset_path("linedpaper.png") %>');
+      }
+    .g_bg {
+        background-image: url('<%= asset_path("p.png") %>');
+      }
+    .houses_header {
+        background-image: url('<%= asset_path("shattered.png") %>');
+      }
+    </style>
+  </head>
+  <body>
+<% if current_user %>
+    <div class="houses_container">
+      <div class="houses_header">
+        <div id="logo">
+        	<i class="fa fa-home icon-size"></i>
+        	黄金屋
+        </div>
+        <ul id="nav">
+          <li>
+            <a href="">
+              <%= current_user.name %>
+            </a>
+          </li>
+          <li><a class="sign-out" title="sign out" href="../"><i class="fa fa-sign-out"></i></a></li>
+        </ul>
+      </div>
+      <div class="main">
+        <div class="hero">
+          <div class="name-card">
+            <div class="avatar">
+              <img src="images/face6.jpg" alt="">
+            </div>
+            <h1 class="name"><%= current_user.name %></h1>
+            <div class="email"><%= current_user.email %></div>
+          </div>
+          <a href="../publish" class="new-book-btn" target="_blank">
+            发布新笔记
+          </a>
+        </div>
+        <div class="user-detail-nav">
+          <div class="user-detail-list">
+            <ul>
+              <li class="my-letter active"><a href="">站内信</a></li>
+              <li class="article"><a href="">读书笔记</a></li>
+              <li class="coudan"><a href="">我的凑单</a></li>
+              <li class="myshare"><a href="">我的分享</a></li>
+
+            </ul>
+            <ul class="social-links">
+            </ul>
+          </div>
+          <div class="user-detail-content g_bg">
+            <div class="my-letter">
+              <%= render template: 'houses/letters' %>
+            </div>
+            <div class="coudan">
+              <%= render partial: 'user_detail_content/coudan' %>
+            </div>
+            <div class="article">
+              <%= render partial: 'user_detail_content/article' %>
+            </div>
+            <div class="myshare">
+              <%= render partial: 'user_detail_content/myshare' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <p class="text-center">
+            Copyright &copy;
+            <span id="year" class="mr5"></span>
+            <span>临水照影</span>
+        </p>
+      </div>
+    </div>
+    <% else %>
+    <% end %>
+  </body>
+  <script>
+    $('.user-detail-content').children('.my-books').show();
+    $('.user-detail-list ul li').click(function(e){
+      $('.user-detail-list ul li').removeClass('active');
+      var thisClass = $(this).attr('class');
+      $(this).addClass('active');
+      $('.user-detail-content').children().hide();
+      $('.user-detail-content').children('.' + thisClass).show();
+      e.preventDefault();
+    });
+  </script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+    <%= stylesheet_link_tag 'css/newinfo' %>
+    <%= stylesheet_link_tag 'css/awesome' %>
+    <%= form_for @allinfo ,:html => {:class => 'contact-form'} do |f| %>
+	  	<span>添加新凑单</span>
+		<ul>
+			<li>
+				<i class="fa fa-book form-icon"></i>
+				<%= f.text_field :title, placeholder: '书名 or 凑单口号！' %>
+			</li>
+			<li>
+				<i class="fa fa-money form-icon"></i>
+				<%= f.text_field :max, placeholder: '达到优惠折扣所需总额' %>
+			</li>
+			<li>
+				<i class="fa fa-cny form-icon"></i>
+				<%= f.text_field :price, placeholder: '平均每人参与所需达到最低金额。' %>
+			</li>
+			<li>
+				<i class="fa fa-share-square-o form-icon"></i>
+				<%= f.text_field :url, placeholder: '团购链接地址' %>
+			</li>
+			    <%= f.submit '提交', :class => 'btn btn-block btn-default' ,data: { confirm: "记得自己参加报名哦！" }%>
+		</ul>
+    <% end %>
+</body>
+
+</html>

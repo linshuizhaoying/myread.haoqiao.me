@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>以旧易书</title>
+    <%= stylesheet_link_tag 'css/yjys2' %>
+    <%= stylesheet_link_tag 'css/yjys1' %>
+    <%= javascript_include_tag 'yjys' %>
+    <style>
+      body{
+        background-image: url('<%= asset_path("extra_clean_paper.png") %>');
+      }
+      .mright{
+        margin-left: 70%;
+      }
+      .mright2{
+        margin-left: 62%;
+      }
+
+    </style>
+</head>
+<body>
+  <span class="icons toggler" data-toggle="list"><span class="entypo-list"></span></span>
+  <%= link_to "发布新交易", "swaps/newswap", class: "btn btn-success btn-rounded right" %>
+    <div class="container">
+      <% @swaps.each do |swap| %>
+        <div class="box">
+          <%@link_to = 'swaps/join/' + swap.id.to_s + "/" + swap.user_id.to_s %>
+
+          <%if swap.state.to_i != 1%>
+            <a type="button" class="btn btn-info btn-outline mright" href=<%= @link_to %>>我要换</a>
+          <% else %>
+            <a type="button" class="btn btn-info mright2 disabled" href=<%= @link_to %>>处于交易中...</a>
+          <% end %>
+
+          <span class="icon-cont"><i class="fa fa-rocket"></i></span>
+
+          <h3><%= swap.title %></h3>
+
+          <ul class="hidden2">
+            <li>书龄：<%= swap.age %>年</li>
+            <li>破损程度：<%= swap.extent %></li>
+            <li>想换的书名：《<%= swap.want_book %>》</li>
+          </ul>
+          
+          <a class="expand"><span class="plus">More</span><span class="minus">-</span></a>
+        </div>
+      <% end %>
+</div>
+
+</body>
+<script>
+    $('.box').click(function() {
+      $(this).toggleClass('selected');
+    });
+</script>
+
+</html>

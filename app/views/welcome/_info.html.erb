@@ -1,0 +1,13 @@
+  <table class="text-center">
+    <% @goodsinfos.each do |goodsinfo| %>
+      <tr class="highlight">
+        <td><%= goodsinfo.title %></td>
+        <td><%= goodsinfo.url %></td>
+          <td><%= link_to 'Show', goodsinfo_path(goodsinfo),class:"btn btn-info" %></td>
+          <td><%= link_to 'Edit', edit_goodsinfo_path(goodsinfo),class:"btn btn-primary" %></td>
+          <td><%= link_to 'Destroy', goodsinfo_path(goodsinfo),class:"btn btn-danger",
+              method: :delete, data: { confirm: 'Are you sure?' } 
+              %>
+      </tr>
+    <% end %>
+  </table>

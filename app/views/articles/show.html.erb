@@ -1,0 +1,18 @@
+<%= stylesheet_link_tag "css/show" %>
+<%= stylesheet_link_tag "css/awesome" %>
+<%= stylesheet_link_tag "css/simditor" %>
+   <style>
+	img{
+		width: 250px;
+		height: auto;
+	}
+   </style>
+  <h1>
+    <%= @article.title %>
+  </h1>
+   <%= @article.createtime %>
+   <%= @article.updatetime %>
+  <p>
+    <%=sanitize @article.body %>
+  </p>
+  <p>

@@ -1,0 +1,342 @@
+*, :before, :after {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  -webkit-text-size-adjust: 100%;
+}
+
+html, body {
+  width: 100%;
+}
+
+body {
+  font-size: 18px;
+  line-height: 1.5;
+  background-color: #fff;
+  background-image: -webkit-linear-gradient(transparent, transparent 26px, #efefef 1px);
+  background-image: linear-gradient(transparent, transparent 26px, #efefef 1px);
+  background-size: auto 27px;
+  padding: 27px;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 29.124px;
+  text-transform: uppercase;
+  line-height: 54px;
+}
+
+h1 + p {
+  font-weight: 400;
+}
+
+p, a {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  margin-bottom: 27px;
+}
+
+article {
+  display: block;
+  max-width: 960px;
+  margin: 0 auto;
+}
+article:before {
+  content: attr(data-width);
+  position: fixed;
+  top: 27px;
+  right: 27px;
+  font-size: .625em;
+  color: #666;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+}
+
+.snap.one {
+  overflow: hidden;
+  float: left;
+  margin: 0 27px 27px 0;
+  width: 60%;
+}
+.snap.one[min-width~="48px"] {
+  height: 27px;
+}
+.snap.one[min-width~="96px"] {
+  height: 54px;
+}
+.snap.one[min-width~="144px"] {
+  height: 81px;
+}
+.snap.one[min-width~="192px"] {
+  height: 108px;
+}
+.snap.one[min-width~="240px"] {
+  height: 135px;
+}
+.snap.one[min-width~="288px"] {
+  height: 162px;
+}
+.snap.one[min-width~="336px"] {
+  height: 189px;
+}
+.snap.one[min-width~="384px"] {
+  height: 216px;
+}
+.snap.one[min-width~="432px"] {
+  height: 243px;
+}
+.snap.one[min-width~="480px"] {
+  height: 270px;
+}
+.snap.one[min-width~="528px"] {
+  height: 297px;
+}
+.snap.one[min-width~="576px"] {
+  height: 324px;
+}
+.snap.one[min-width~="624px"] {
+  height: 351px;
+}
+.snap.one[min-width~="672px"] {
+  height: 378px;
+}
+.snap.one[min-width~="720px"] {
+  height: 405px;
+}
+.snap.one[min-width~="768px"] {
+  height: 432px;
+}
+.snap.one[min-width~="816px"] {
+  height: 459px;
+}
+.snap.one[min-width~="864px"] {
+  height: 486px;
+}
+.snap.one[min-width~="912px"] {
+  height: 513px;
+}
+
+.snap.two {
+  overflow: hidden;
+  float: right;
+  margin: 0 0 27px 27px;
+  width: 30%;
+}
+.snap.two[min-width~="15px"] {
+  height: 27px;
+}
+.snap.two[min-width~="30px"] {
+  height: 54px;
+}
+.snap.two[min-width~="46px"] {
+  height: 81px;
+}
+.snap.two[min-width~="61px"] {
+  height: 108px;
+}
+.snap.two[min-width~="76px"] {
+  height: 135px;
+}
+.snap.two[min-width~="91px"] {
+  height: 162px;
+}
+.snap.two[min-width~="106px"] {
+  height: 189px;
+}
+.snap.two[min-width~="122px"] {
+  height: 216px;
+}
+.snap.two[min-width~="137px"] {
+  height: 243px;
+}
+.snap.two[min-width~="152px"] {
+  height: 270px;
+}
+.snap.two[min-width~="167px"] {
+  height: 297px;
+}
+.snap.two[min-width~="182px"] {
+  height: 324px;
+}
+.snap.two[min-width~="197px"] {
+  height: 351px;
+}
+.snap.two[min-width~="213px"] {
+  height: 378px;
+}
+.snap.two[min-width~="228px"] {
+  height: 405px;
+}
+.snap.two[min-width~="243px"] {
+  height: 432px;
+}
+.snap.two[min-width~="258px"] {
+  height: 459px;
+}
+.snap.two[min-width~="273px"] {
+  height: 486px;
+}
+.snap.two[min-width~="289px"] {
+  height: 513px;
+}
+.snap.two[min-width~="304px"] {
+  height: 540px;
+}
+.snap.two[min-width~="319px"] {
+  height: 567px;
+}
+.snap.two[min-width~="334px"] {
+  height: 594px;
+}
+.snap.two[min-width~="349px"] {
+  height: 621px;
+}
+.snap.two[min-width~="365px"] {
+  height: 648px;
+}
+.snap.two[min-width~="380px"] {
+  height: 675px;
+}
+.snap.two[min-width~="395px"] {
+  height: 702px;
+}
+.snap.two[min-width~="410px"] {
+  height: 729px;
+}
+.snap.two[min-width~="425px"] {
+  height: 756px;
+}
+.snap.two[min-width~="440px"] {
+  height: 783px;
+}
+.snap.two[min-width~="456px"] {
+  height: 810px;
+}
+.snap.two[min-width~="471px"] {
+  height: 837px;
+}
+.snap.two[min-width~="486px"] {
+  height: 864px;
+}
+.snap.two[min-width~="501px"] {
+  height: 891px;
+}
+.snap.two[min-width~="516px"] {
+  height: 918px;
+}
+.snap.two[min-width~="532px"] {
+  height: 945px;
+}
+.snap.two[min-width~="547px"] {
+  height: 972px;
+}
+.snap.two[min-width~="562px"] {
+  height: 999px;
+}
+.snap.two[min-width~="577px"] {
+  height: 1026px;
+}
+.snap.two[min-width~="592px"] {
+  height: 1053px;
+}
+.snap.two[min-width~="608px"] {
+  height: 1080px;
+}
+.snap.two[min-width~="623px"] {
+  height: 1107px;
+}
+.snap.two[min-width~="638px"] {
+  height: 1134px;
+}
+.snap.two[min-width~="653px"] {
+  height: 1161px;
+}
+.snap.two[min-width~="668px"] {
+  height: 1188px;
+}
+.snap.two[min-width~="683px"] {
+  height: 1215px;
+}
+.snap.two[min-width~="699px"] {
+  height: 1242px;
+}
+.snap.two[min-width~="714px"] {
+  height: 1269px;
+}
+.snap.two[min-width~="729px"] {
+  height: 1296px;
+}
+.snap.two[min-width~="744px"] {
+  height: 1323px;
+}
+.snap.two[min-width~="759px"] {
+  height: 1350px;
+}
+.snap.two[min-width~="775px"] {
+  height: 1377px;
+}
+.snap.two[min-width~="790px"] {
+  height: 1404px;
+}
+.snap.two[min-width~="805px"] {
+  height: 1431px;
+}
+.snap.two[min-width~="820px"] {
+  height: 1458px;
+}
+.snap.two[min-width~="835px"] {
+  height: 1485px;
+}
+.snap.two[min-width~="851px"] {
+  height: 1512px;
+}
+.snap.two[min-width~="866px"] {
+  height: 1539px;
+}
+.snap.two[min-width~="881px"] {
+  height: 1566px;
+}
+.snap.two[min-width~="896px"] {
+  height: 1593px;
+}
+.snap.two[min-width~="911px"] {
+  height: 1620px;
+}
+.snap.two[min-width~="926px"] {
+  height: 1647px;
+}
+.snap.two[min-width~="942px"] {
+  height: 1674px;
+}
+
+article[max-width~="480px"] .snap.one {
+  width: 100%;
+}
+article[max-width~="480px"] .snap.two {
+  width: 50%;
+}
+
+img {
+  width: 100%;
+}
+
+article, .snap {
+  -webkit-transition: all .5s ease-in-out;
+          transition: all .5s ease-in-out;
+}
+
+a {
+  position: fixed;
+  top: 0;
+  right: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: magenta;
+  color: #fff;
+  font-size: .9em;
+  height: 27px;
+  padding: 0 27px;
+}

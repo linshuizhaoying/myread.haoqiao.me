@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>邮箱</title>
+  <%= stylesheet_link_tag 'css/letter?v=3' %>
+</head>
+  <style>
+    .right{
+      margin-top: 5%;
+      margin-left:60%;
+    }
+    .form_style{
+      width: 90%;
+      margin-left: 8%;
+    }
+    .font-red{
+      color: red;
+    }
+    .font-blue{
+      color:#428bca;
+    }
+
+  </style>
+<body>
+
+  <div class='letter_title'>
+    <h1>
+     Mail Box
+    </h1>
+    <h2>
+      站内私信
+    </h2>
+  </div>
+
+  <div class='letter_wrapper'>
+    <input id='qianqian' type='checkbox'>
+    <label for='qianqian'>
+      <p class="font-blue">天天静阅欢迎您使用本平台</p>
+      <div class='lil_arrow'></div>
+      <div class='content'>
+        <ul>
+          <li>
+            <h4>天天静阅是一个开放而友好的社区，每个人都可以在这里自由地发现或是分享内容。希望你能玩的愉快！</h4>
+            <p>天天静阅官方</p>
+          </li>
+        </ul>
+      </div>
+      <span></span>
+    </label>
+   <% @letters.each do |letter| %>
+    <% if letter.belong_id.to_s == @user.id.to_s && letter.state.to_i != -1 %>
+    <input id= <%= letter.id %> type='checkbox'>
+    <label for=<%= letter.id %>>
+      <p class="font-red"><%= letter.title %></p>
+      <div class='lil_arrow'></div>
+      <div class=<%= letter.id %>>
+        <ul>
+          <li>
+            <h4><%= letter.content %></h4>
+            <% @name = @users.find(letter.from_id).name.to_s%>
+            <p>来自用户：<%= @name %></p>
+          </li>
+
+
+          <%= form_for @new do |f| %>
+            <%= f.text_field :content, placeholder∂: '请填写回复内容！', class:"form-control form_style" %>
+             <%= f.text_field :title, :value => "以旧易书:您的信件有人回应啦！快给他（她）回信吧",class:"hide"%>
+            <%= f.text_field :from_id, :value => @user.id.to_s,class:"hide"%>
+            <%= f.text_field :belong_id, :value => letter.from_id.to_s ,class:"hide" %>
+            <%= f.text_field :state, :value => letter.id ,class:"hide" %>
+           <%= f.submit '回复并标记已读', :class => 'btn btn-primary btn-rounded right text-center' %>         <% end %>
+        </ul>
+      </div>
+    </label>
+    <% end %>
+   <% end %>
+  </div>
+
+
+</body>
+
+</html>

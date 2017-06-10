@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>资源共享</title>
+
+  <meta name="viewport" content="width=device-width">
+
+  <%= stylesheet_link_tag 'css/share' %>
+  <%= stylesheet_link_tag 'css/normalize' %>
+  <%= javascript_include_tag 'sharejq' %>
+  <%= javascript_include_tag 'share' %>
+  <style>
+  .icons{
+    font-size: 25px;
+  }
+  .right{
+    float:right;
+  }
+  body{
+    background-image: url('<%= asset_path("share.png") %>');
+  }
+  </style>
+</head>
+ 
+<body>
+  <span class="icons toggler active" data-toggle="grid"><span class="entypo-layout"></span></span>
+  <span class="icons toggler" data-toggle="list"><span class="entypo-list"></span></span>
+  <%= link_to "发布新共享", "shares/newshare", class: "btn btn-success btn-rounded right" %>
+
+<ul class="surveys grid">
+  <% @shares.each do |share| %>
+    <li class="survey-item">
+
+      <span class="survey-name">
+        <%= share.title %>
+      </span>
+
+      <span class="survey-country grid-only">
+        <a href="http://<%= share.link %>" target="_blank">网盘下载</a>
+      </span>
+
+      <div class="pull-right">
+        <span class="survey-progress">
+          <span class="survey-progress-bg">
+          <!--   <span class="survey-progress-fg" style="width: 1%;"></span> -->
+          </span>
+
+          <span class="survey-progress-labels">
+<!--             <span class="survey-progress-label">
+              最大下载人数:<%= share.limit %>人
+            </span> -->
+          </span>
+        </span>
+         <span>
+          发布于：<%= share.createtime.strftime("%Y年%m月%d日 %H时%M分") %>
+        </span>
+      </div>
+    </li>
+  <% end %>
+
+</ul>
+</body>
+
+</html>

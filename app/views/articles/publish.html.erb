@@ -1,0 +1,38 @@
+<%= stylesheet_link_tag "css/awesome" %>
+<%= stylesheet_link_tag "css/simditor" %>
+<html>
+	<style>
+	  .title{
+	  	font-size: 28px;
+	  }
+	</style>
+	<head>
+	    <meta charset="utf-8">
+	</head>
+	<body>
+	  <div class="container">
+		<%= form_for @article do |f| %>
+		<div class="form-group">
+		  <%= f.label  :title ,'标题',class:"title"%><br>
+    	  <%= f.text_field :title,class:"form-control" %>
+        </div>
+        <%= f.label  :title ,'内容',class:"title"%><br>
+		<%= f.text_area :body , class:"editor"%>
+		<div class="text-center">
+		  <%= f.submit '提交', :class => 'btn btn-block btn-default' %>
+        </div>
+	    <% end %>
+	  </div>
+	</body>
+</html>
+
+
+<%= javascript_include_tag "js/module" %>
+<%= javascript_include_tag "js/hotkeys" %>
+<%= javascript_include_tag "js/uploader" %>
+<%= javascript_include_tag "js/simditor" %>
+<script>
+var editor = new Simditor({
+  textarea: $('.editor')
+});
+</script>

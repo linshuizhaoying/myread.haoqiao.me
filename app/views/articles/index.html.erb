@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <%= stylesheet_link_tag 'css/discuss?v=2' %>
+  <%= javascript_include_tag 'js/discuss' %>
+  <title>笔记广场</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+
+  <style>
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+</style>
+
+    <style>
+.container {
+  margin: 0 auto;
+  max-width: 640px;
+}
+
+a {
+  font-weight: bold;
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  overflow-x: hidden;
+  padding: 20px;
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: 100%;
+  line-height: 1.25;
+  color: #295162;
+  background-color: #fffffb;
+}
+
+.iphone-bar {
+  display: none;
+  height: 20px;
+  margin: -20px -20px 0 -20px;
+  background-color: black;
+  background-size: cover;
+  background-position: center top;
+}
+
+header {
+  box-sizing: border-box;
+  margin: 0 -20px 0 -20px;
+  margin-top: -20px;
+  padding: 0;
+  text-align: center;
+  height: 44px;
+  line-height: 44px;
+  color: #fffffb;
+  background: #1a2d32;
+}
+header .logo {
+  color: tomato;
+}
+
+.toolbar {
+  box-sizing: border-box;
+  margin: 0 -20px;
+  height: 54px;
+  padding: 1em;
+  font-weight: 500;
+  text-align: center;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
+.toolbar button {
+  margin: -0.8em -0.375em;
+  padding: 0.75em;
+  font-size: 1.25rem;
+  color: #295162;
+  background-color: transparent;
+  border: 2px solid #ddd;
+  border-radius: 0px;
+  border: none;
+}
+.toolbar .button-group:first-child {
+  float: left;
+}
+.toolbar .button-group:nth-child(2) {
+  float: right;
+}
+
+h2 {
+  margin: 0.625em 0;
+  margin-top: 1.875em;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: #9e9ea9;
+}
+
+li {
+  overflow: hidden;
+  margin: 0 -10px -1px -10px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+}
+li .date {
+  float: left;
+  padding: 0.125em 0.75em 0 0;
+  margin-left: 0.25em;
+  margin-right: 0.75em;
+  font-weight: bold;
+  text-align: center;
+  border-right: 3px solid #ddd;
+}
+li .date .weekday, li .date .day {
+  display: block;
+}
+li .date .weekday {
+  font-size: 0.75em;
+}
+li .date .day {
+  margin-top: -2px;
+  font-size: 1.3em;
+}
+
+li h3 {
+  font-weight: bold;
+}
+li .duration, li .location {
+  font-size: 0.875em;
+  color: #9e9ea9;
+}
+li .duration {
+  margin-right: 0.25em;
+  padding-left: 0.1em;
+  padding-right: 0.5em;
+  border-right: 1px solid #ddd;
+}
+
+li.past {
+  color: #9e9ea9;
+  background-color: #eee;
+}
+
+li.next .date {
+  border-right-color: LightSeaGreen;
+}
+
+button.subscribe {
+  position: relative;
+  top: -4px;
+  left: -11px;
+  /* font-size: 1rem */
+}
+button.subscribe span {
+  position: absolute;
+  top: 0;
+  left: 5px;
+}
+button.subscribe span:last-child {
+  font-size: 0.5em;
+  top: 7px;
+  left: 10px;
+}
+
+.floatr{
+  float: right;
+}
+</style>
+
+</head>
+
+<body>
+
+  <div class='iphone-bar'></div>
+<header>
+  <h1>
+    <a href="../../"><span class='fa fa-fire logo'></span></a>
+  </h1>
+</header>
+
+
+
+<div class='toolbar'>
+  <div class='container'>
+    <div class='button-group'>
+      <button>
+        <a class='fa fa-pencil' href="/publish"  target="_blank" >
+        </a>
+      </button>
+    </div>
+  </div>
+</div>
+<div class='container'>
+  <h2>主题</h2>
+  <ul>
+    <% @articles.each do |article| %>
+        <li class='next'>
+          <label class='date'>
+            <span class='Month'><%= article.createtime.to_a[4]%>月</span>
+            <span class='day'><%= article.createtime.to_a[3]%>日</span>
+          </label>
+          <a class="floatr" href=<%=articles_path %>/<%=article.id %> target="_blank" >
+            <span class='fa fa-arrow-right'></span>
+          </a>
+          <a href=<%=articles_path %>/<%=article.id %> target="_blank" ><%= article.title %></a>
+          <p>
+            <span class='creattime'><%= article.createtime.to_a[2]%>:<%= article.createtime.to_a[1]%>:<%= article.createtime.to_a[0]%> Created</span>
+            <% @author = User.all.find(article.user_id.to_i).name.to_s%>
+            <span class='updatetiome'>By author <%= @author %></span>
+          </p>
+        </li>
+    <% end %>
+  </ul>
+</div>
+
+</body>
+
+</html>
